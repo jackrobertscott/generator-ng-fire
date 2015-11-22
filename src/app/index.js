@@ -8,6 +8,13 @@ module.exports = class Generator extends Base {
 
     this.data = {};
 
+    this.argument('appname', {
+      type: String,
+      required: true,
+    });
+
+    this.appname = this.data.appname = _.kebabCase(this.appname);
+
     this.option('skip-message', {
       desc: 'Skips the welcome message',
       type: Boolean,
