@@ -4,6 +4,7 @@ var path = require('path');
 var gulp = require('gulp');
 var gulpif = require('gulp-if');
 var sourcemaps = require('gulp-sourcemaps');
+var ngAnnotate = require('gulp-ng-annotate');
 var babel = require('gulp-babel');
 var autoprefixer = require('gulp-autoprefixer');
 var less = require('gulp-less');
@@ -23,6 +24,7 @@ gulp.task('js', function() {
     .pipe(babel({
       presets: ['es2015'],
     }))
+    .pipe(ngAnnotate())
     .pipe(gulpif(config.sourcemaps, sourcemaps.write()))
     .pipe(gulp.dest(config.paths.tmp));
 });
