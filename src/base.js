@@ -64,15 +64,10 @@ module.exports = class GeneratorBase extends Base {
       }
 
       paths.forEach((srcPath) => {
-        let relative = path.relative(src, srcPath);
-        let dirname = path.dirname(relative);
-        let basename = path.basename(relative);
-
-        if (basename.indexOf('_') === 0) {
-          basename = basename.substr(1);
-        }
-
-        let destPath = path.join(dest, dirname, basename);
+        const relative = path.relative(src, srcPath);
+        const dirname = path.dirname(relative);
+        const basename = this._rmUnderscore(path.basename(relative));
+        const destPath = path.join(dest, dirname, basename);
 
         files.push({
           src: srcPath,
@@ -84,5 +79,12 @@ module.exports = class GeneratorBase extends Base {
     });
 
     return files;
+  }
+
+  _rmUnderscore(name) {
+    if (name.indexOf('_') === 0) {
+      return name.substr(1);
+    }
+    return name;
   }
 };
