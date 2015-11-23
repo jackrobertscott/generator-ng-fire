@@ -5,6 +5,9 @@
     .module('<%= appname %>')
     .factory('<%= uppername %>Factory', <%= uppername %>Factory);
 
+  /**
+   * Factory for easily accessing both arrays and objects of the <%= uppername %> entity.
+   */
   /** @ngInject */
   function <%= uppername %>Factory(Firebase, <%= uppername %>Array, <%= uppername %>Object) {
     function Service(url) {

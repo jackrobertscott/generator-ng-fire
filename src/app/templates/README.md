@@ -17,6 +17,9 @@ Main configuration is kept in a file called config.json. This file should contai
 - `sourcemaps` Type `boolean|regex|function` Required: Add sourcemaps. (see: [gulp-if](https://www.npmjs.com/package/gulp-if))
 - `cname` Type `string` Optional: Add `CNAME` file when deploying with this url.
 
+## Style Guide
+You should follow the [Angular Style Guide](https://github.com/johnpapa/angular-styleguide) by John Papa.
+
 ## File Injection
 Script and style files, both custom built and installed from bower, may be injected into markup files. To do this, you must include associated comment tags into any markup file you wish to have the scripts/styles included in. Bellow is an example:
 
@@ -41,4 +44,23 @@ Script and style files, both custom built and installed from bower, may be injec
     <!-- endinject -->
   </body>
 </html>
+```
+
+## Authentication
+Authentication is controlled by firebase. You can setup your own authentication system or use one of Firebase's techniques (see [here](https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html)). To prevent an unauthenticated user from accessing a route; set data.authenticate to true, like so:
+
+```js
+/** @ngInject */
+function routeConfig($stateProvider) {
+  $stateProvider
+    .state('base.rock', {
+      url: '/rock',
+      templateUrl: 'app/rock/rock.html',
+      controller: 'RockController',
+      controllerAs: 'vm',
+      data: {
+        authenticate: true,
+      },
+    });
+}
 ```

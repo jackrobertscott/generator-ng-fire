@@ -5,6 +5,10 @@
     .module('<%= appname %>')
     .factory('<%= uppername %>', <%= uppername %>);
 
+  /**
+   * Extensions on service shared accross both array and object entities
+   * @see https://www.firebase.com/docs/web/libraries/angular/guide/extending-services.html
+   */
   /** @ngInject */
   function <%= uppername %>(Firebase, $firebaseObject) {
     var service = {
