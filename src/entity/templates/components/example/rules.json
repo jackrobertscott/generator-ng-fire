@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "<%= lowername %>s": {
+      ".read": true,
+      ".indexOn": "someChildId",
+      "$<%= lowername %>Id": {
+        ".write": "auth !== null",
+        "someChildId": {
+          ".validate": "root.child('someChild').child(newData.val()).exists()"
+        },
+        "createdAt": {
+          ".validate": "newData.val() <= now"
+        },
+        "updatedAt": {
+          ".validate": "newData.val() <= now"
+        }
+      }
+    }
+  }
+}

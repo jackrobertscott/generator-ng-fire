@@ -72,5 +72,6 @@ module.exports = class Generator extends Base {
     this._templateFile('components/example/example-factory.service.js', path.join(src, 'app', 'components', name, name + '-factory.service.js'), this.data);
     this._templateFile('components/example/example-object.service.js', path.join(src, 'app', 'components', name, name + '-object.service.js'), this.data);
     this._templateFile('components/example/example.service.js', path.join(src, 'app', 'components', name, name + '.service.js'), this.data);
+    this._templateFile('components/example/rules.json', path.join(src, 'app', 'components', name, 'rules.json'), this.data);
   }
 };

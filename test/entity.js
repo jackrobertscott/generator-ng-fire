@@ -34,6 +34,7 @@ describe('ng-fire:entity', function() {
         'src/app/components/' + this.data.kebabname + '/' + this.data.kebabname + '-factory.service.js',
         'src/app/components/' + this.data.kebabname + '/' + this.data.kebabname + '-object.service.js',
         'src/app/components/' + this.data.kebabname + '/' + this.data.kebabname + '.service.js',
+        'src/app/components/' + this.data.kebabname + '/rules.json',
       ]);
     });
   });
