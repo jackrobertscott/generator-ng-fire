@@ -35,17 +35,18 @@ module.exports = class Generator extends Base {
       this.log(yosay('Let\'s make a new entity!'));
     }
 
+    const hasName = typeof this.options.name === 'string' && this.options.name.trim().length;
     const questions = [{
       type: 'input',
       name: 'name',
       message: 'Entity name:',
       default: 'example',
-      when: !!(this.options.name && this.options.name.trim().length),
+      when: !hasName,
     }];
 
     this.prompt(questions, answers => {
       let name;
-      if (this.options.name && this.options.name.trim().length) {
+      if (hasName) {
         name = this.options.name.trim();
       } else {
         name = answers.name.trim();

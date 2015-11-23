@@ -10,9 +10,7 @@ gulp.task('inject:tmp', function() {
   var js = gulp.src([
     path.join(config.paths.tmp, '**/*.js'),
     '!' + path.join(config.paths.tmp, 'vendor/*.js'),
-  ], {
-    read: false,
-  }).pipe(angularFilesort());
+  ]).pipe(angularFilesort());
   var css = gulp.src([
     path.join(config.paths.tmp, '**/*.css'),
     '!' + path.join(config.paths.tmp, 'vendor/*.css'),
@@ -20,6 +18,7 @@ gulp.task('inject:tmp', function() {
     read: false,
   });
   var vendor = gulp.src([
+    path.join(config.paths.tmp, 'vendor/angular?(.min).js'),
     path.join(config.paths.tmp, 'vendor/*.js'),
     path.join(config.paths.tmp, 'vendor/*.css'),
   ], {
@@ -49,6 +48,7 @@ gulp.task('inject:build', function() {
     read: false,
   });
   var vendor = gulp.src([
+    path.join(config.paths.tmp, 'vendor/angular?(.min).js'),
     path.join(config.paths.dist, 'vendor/*.js'),
     path.join(config.paths.dist, 'vendor/*.css'),
   ], {
