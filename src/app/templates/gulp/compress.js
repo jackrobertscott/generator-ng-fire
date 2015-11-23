@@ -18,7 +18,10 @@ gulp.task('compress', function() {
   var jsFilter = filter(['**/*.js', '!vendor/*.js'], {
     restore: true,
   });
-  var jsVendor = filter('vendor/*.js', {
+  var jsVendor = filter([
+    'vendor/angular?(.min).js',
+    'vendor/*.js',
+  ], {
     restore: true,
   });
   var cssFilter = filter(['**/*.css', '!vendor/*.css'], {
