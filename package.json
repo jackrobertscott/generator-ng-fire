@@ -1,6 +1,6 @@
 {
   "name": "generator-ng-fire",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Generator for AngularJS apps with Firebase integration",
   "main": "index.js",
   "scripts": {
