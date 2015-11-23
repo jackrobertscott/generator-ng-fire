@@ -9,9 +9,13 @@ describe('ng-fire:app', function() {
     before(function(done) {
       this.data = {
         appname: 'appy',
+        framework: 'ionic',
       };
       helpers.run(path.join(__dirname, '../generators/app'))
         .withArguments([this.data.appname])
+        .withOptions({
+          framework: this.data.framework,
+        })
         .on('end', done);
     });
 
