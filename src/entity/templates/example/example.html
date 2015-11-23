@@ -1,0 +1,16 @@
+<ul>
+  <li ng-repeat="<%= lowername %> in vm.<%= lowername %>s">
+    <a ng-click="vm.inspect(<%= lowername %>.$id)">{{ <%= lowername %>.name }}</a>
+  </li>
+</ul>
+<form name="form" ng-submit="vm.save(form)">
+  <div class="name">
+    <input name="name" ng-model="vm.<%= lowername %>.name" placeholder="Name" required="required" type="text"/>
+    <div class="error" ng-show="form.name.$invalid &amp;&amp; form.name.$touched">
+      <p>Please enter a name</p>
+    </div>
+  </div>
+  <button ng-disabled="form.$invalid" type="submit">Save</button>
+  <button ng-click="vm.remove()" ng-show="vm.<%= lowername %>.$id">Remove</button>
+  <button ng-click="vm.create()">New</button>
+</form>
