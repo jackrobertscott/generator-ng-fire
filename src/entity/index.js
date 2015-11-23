@@ -9,8 +9,6 @@ module.exports = class Generator extends Base {
 
     this.data = {};
 
-    this.appname = this.data.appname = _.kebabCase(this.appname);
-
     this.option('skip-message', {
       desc: 'Skips the welcome message',
       type: Boolean,
@@ -42,12 +40,12 @@ module.exports = class Generator extends Base {
       name: 'name',
       message: 'Entity name:',
       default: 'example',
-      when: this.options.name && this.options.name.trim().length,
+      when: !!(this.options.name && this.options.name.trim().length),
     }];
 
     this.prompt(questions, answers => {
       let name;
-      if (this.options.name && !!this.options.name.trim().length) {
+      if (this.options.name && this.options.name.trim().length) {
         name = this.options.name.trim();
       } else {
         name = answers.name.trim();
@@ -65,13 +63,13 @@ module.exports = class Generator extends Base {
     const name = this.data.kebabname;
     const src = (this.data.paths && this.data.paths.src) ? this.data.paths.src : 'src';
 
-    this._templateFile('example/example.controller.js', path.join(src, 'app', name, name + '.controller.js'));
-    this._templateFile('example/example.html', path.join(src, 'app', name, name + '.html'));
-    this._templateFile('example/example.route.js', path.join(src, 'app', name, name + '.route.js'));
+    this._templateFile('example/example.controller.js', path.join(src, 'app', name, name + '.controller.js'), this.data);
+    this._templateFile('example/example.html', path.join(src, 'app', name, name + '.html'), this.data);
+    this._templateFile('example/example.route.js', path.join(src, 'app', name, name + '.route.js'), this.data);
 
-    this._templateFile('components/example/example-array.service.js', path.join(src, 'app', 'components', name, name + '-array.service.js'));
-    this._templateFile('components/example/example-factory.service.js', path.join(src, 'app', 'components', name, name + '-factory.service.js'));
-    this._templateFile('components/example/example-object.service.js', path.join(src, 'app', 'components', name, name + '-object.service.js'));
-    this._templateFile('components/example/example.service.js', path.join(src, 'app', 'components', name, name + '.service.js'));
+    this._templateFile('components/example/example-array.service.js', path.join(src, 'app', 'components', name, name + '-array.service.js'), this.data);
+    this._templateFile('components/example/example-factory.service.js', path.join(src, 'app', 'components', name, name + '-factory.service.js'), this.data);
+    this._templateFile('components/example/example-object.service.js', path.join(src, 'app', 'components', name, name + '-object.service.js'), this.data);
+    this._templateFile('components/example/example.service.js', path.join(src, 'app', 'components', name, name + '.service.js'), this.data);
   }
 };

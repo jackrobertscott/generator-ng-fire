@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('angularFirebaseTemplate')
+    .module('<%= appname %>')
     .factory('Auth', Auth);
 
   /** @ngInject */

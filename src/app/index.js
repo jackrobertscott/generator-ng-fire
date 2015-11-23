@@ -43,12 +43,13 @@ module.exports = class Generator extends Base {
 
   writing() {
     this._copyFile('_.gitignore', '.gitignore');
+    this._copyFile('_.jshintrc', '.jshintrc');
+    this._templateFile('_bower.json', 'bower.json', this.data);
     this._copyFile('_package.json', 'package.json');
     this._copyFile('config.json');
     this._copyFile('gulpfile.js');
-    this._copyDirectory('gulp');
-    this._templateFile('_bower.json', 'bower.json', this.data);
     this._templateFile('README.md', this.data);
+    this._copyDirectory('gulp');
     this._copyFile('src/favicon.ico');
     this._copyDirectory('src/assets');
     this._templateFile('src/index.html', this.data);
