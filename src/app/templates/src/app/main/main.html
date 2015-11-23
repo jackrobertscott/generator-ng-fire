@@ -1,0 +1,32 @@
+<h1>Errors</h1>
+<ul>
+  <li ng-repeat="error in vmMC.errors">{{ error }}</li>
+</ul>
+<hr/>
+<h1>Login</h1>
+<form name="form" ng-submit="vmMC.login(form, user)">
+  <div class="email">
+    <input name="email" ng-model="user.email" placeholder="Email" required="required" type="email"/>
+    <div class="error" ng-show="form.email.$invalid &amp;&amp; form.email.$touched">
+      <p>Please enter a email</p>
+    </div>
+  </div>
+  <div class="password">
+    <input name="password" ng-model="user.password" placeholder="Password" required="required" type="password"/>
+    <div class="error" ng-show="form.password.$invalid &amp;&amp; form.password.$touched">
+      <p>Please enter a password</p>
+    </div>
+  </div>
+  <button ng-disabled="form.$invalid" type="submit">Login</button>
+</form>
+<hr/>
+<h1>Forgot Password</h1>
+<form name="form" ng-submit="vmMC.resetPassword(form, user)">
+  <div class="email">
+    <input name="email" ng-model="user.email" placeholder="Email" required="required" type="email"/>
+    <div class="error" ng-show="form.email.$invalid &amp;&amp; form.email.$touched">
+      <p>Please enter a email</p>
+    </div>
+  </div>
+  <button ng-disabled="form.$invalid" type="submit">Send Reset Email</button>
+</form>
