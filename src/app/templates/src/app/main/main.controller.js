@@ -36,7 +36,8 @@
           })
           .then(function(authData) {
             $log.log('logged in: ' + authData.uid);
-            $state.go('base.example');
+            //$state.go('base.example'); // welcome page
+            alert('You have logged in');
           })
           .catch(util.failure);
       }
