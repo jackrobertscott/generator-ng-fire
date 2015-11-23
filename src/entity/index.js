@@ -26,6 +26,10 @@ module.exports = class Generator extends Base {
       this.config.getAll(),
       this.fs.readJSON(this.destinationPath('config.json'), {})
     );
+
+    if (typeof this.options.name === 'string' && this.options.name.trim().length) {
+      this.data.name = this.options.name.trim();
+    }
   }
 
   prompting() {
@@ -35,26 +39,22 @@ module.exports = class Generator extends Base {
       this.log(yosay('Let\'s make a new entity!'));
     }
 
-    const hasName = typeof this.options.name === 'string' && this.options.name.trim().length;
     const questions = [{
       type: 'input',
       name: 'name',
       message: 'Entity name:',
       default: 'example',
-      when: !hasName,
+      when: !this.data.name,
     }];
 
     this.prompt(questions, answers => {
-      let name;
-      if (hasName) {
-        name = this.options.name.trim();
-      } else {
-        name = answers.name.trim();
+      if (!this.data.name) {
+        this.data.name = answers.name.trim();
       }
 
-      this.data.uppername = _.capitalize(_.camelCase(name));
-      this.data.lowername = _.camelCase(name);
-      this.data.kebabname = _.kebabCase(name);
+      this.data.uppername = _.capitalize(_.camelCase(this.data.name));
+      this.data.lowername = _.camelCase(this.data.name);
+      this.data.kebabname = _.kebabCase(this.data.name);
 
       done();
     });

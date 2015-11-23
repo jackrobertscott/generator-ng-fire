@@ -21,6 +21,12 @@ module.exports = class Generator extends Base {
     });
   }
 
+  initializing() {
+    if (typeof this.options.framework === 'string' && ['semantic-ui', 'ionic', 'bs4', 'bs3', 'none'].indexOf(this.options.framework.trim()) !== -1) {
+      this.data.framework = this.options.framework.trim();
+    }
+  }
+
   prompting() {
     const done = this.async();
 
@@ -28,7 +34,29 @@ module.exports = class Generator extends Base {
       this.log(yosay('Allo! Allo! Welcome to the Ng-Fire Generator!'));
     }
 
-    const questions = [];
+    const questions = [{
+      type: 'list',
+      name: 'framework',
+      message: 'Use a framework:',
+      default: 'semantic',
+      choices: [{
+        name: 'Semantic UI',
+        value: 'semantic-ui',
+      }, {
+        name: 'Ionic',
+        value: 'ionic',
+      }, {
+        name: 'Bootstrap 4',
+        value: 'bs4',
+      }, {
+        name: 'Bootstrap 3',
+        value: 'bs3',
+      }, {
+        name: 'None',
+        value: 'none',
+      }],
+      when: !!this.data.framework,
+    }];
 
     this.prompt(questions, answers => {
       _.assign(this.data, answers);

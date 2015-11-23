@@ -14,7 +14,11 @@
     "angular-sanitize": "~1.4.0",
     "angular-touch": "~1.4.0",
     "angular-ui-router": "~0.2.15",
-    "angularfire": "~1.1.2",
+    "angularfire": "~1.1.2",<% if (framework === 'ionic') { %>
+    "ionic": "~1.1.1",<% } else if (framework === 'semantic-ui') { %>
+    "semantic-ui": "~2.1.6",<% } else if (framework === 'bs4') { %>
+    "bootstrap": "4.0",<% } else if (framework === 'bs3') { %>
+    "bootstrap": "~3.3.5",<% } %>
     "jquery": "~2.1.4",
     "moment": "~2.10.3",
     "lodash": "~3.10.1"
